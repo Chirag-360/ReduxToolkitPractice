@@ -3,11 +3,10 @@ background-color: dimgray;
 width: 200px;
 border-radius: 5px;
 padding: 2px;
-height: 30px;
+height: 20px;
 margin: 10px;
 border: 3px solid seashell;
 margin-top: 10px;
-display: block;
 
 }
 
@@ -16,11 +15,10 @@ display: block;
     width: 200px;
     border-radius: 5px;
     padding: 2px;
-    height: 30px;
+    height: 20px;
     margin: 10px;
-    margin-bottom: 10px;
+    margin-bottom: -8px;
     border: 3px solid seashell;
-    display: block;
 
     }
 
@@ -35,25 +33,4 @@ display: block;
     margin-bottom: -3px;
     font-weight: bolder;
     border: 3px solid seashell;
-    display: block;
-}
-
-#auther{
-    background-color: dimgray;
-    width: 200px;
-    border-radius: 5px;
-    padding: 2px;
-    height: 40px;
-    margin: 10px;
-    margin-bottom: 10px;
-    border: 3px solid seashell;
-    display: block;
-    font-weight: lighter;
-}
-
-label{
-    font-weight: bolder;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-size: x-large;
 }

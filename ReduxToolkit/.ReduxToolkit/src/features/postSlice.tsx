@@ -24,7 +24,6 @@ export const postSlice = createSlice({
             state.push(action.payload)
              },
             prepare:(title:string,content:string)=>{
-                //   type:"post/postAd",
               return {
                 payload:{
                 id:nanoid(),
@@ -33,6 +32,7 @@ export const postSlice = createSlice({
                 }
                
               }
+            //   type:"post/postAd",
             }
         }
     }
