@@ -62,3 +62,7 @@ button:disabled{
     background-color: #cccccc !important;
     color: #666666 !important ;
   }
+
+button:hover {
+ color:  rgb(192, 81, 81) !important;
+}
