@@ -1,18 +1,29 @@
 import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit"
-
+import {sub} from "date-fns"
+//TS Error = need to defined userId in this interface for future incoming data in userId
 interface StateItem {
     id: string;
     title: string;
     content: string;
     userId:string;
+    date:string;
   }
     
-
+//TS Error - need to pass userId for postlist to render other giver error
 const initialState:StateItem[] = [
     {
-        id:"1",title:"randome",content:"something" , userId:""
+        id:"1",
+        title:"randome",
+        content:"something",
+        userId:"",
+        date:sub(new Date(), {minutes : 10}).toISOString()
     },  {
-        id:"2",title:"randome2",content:"something2", userId:""
+        id:"2",
+        title:"randome2",
+        content:"something2", 
+        userId:"",
+        date:sub(new Date(), {minutes : 5}).toISOString()
+
     }
 ]
 
@@ -32,6 +43,7 @@ export const postSlice = createSlice({
                 title,
                 content,
                 userId,
+                date: new Date().toISOString(),
                 }
                
               }
