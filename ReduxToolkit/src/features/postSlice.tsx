@@ -6,7 +6,7 @@ interface StateItem {
     title: string;
     content: string;
     userId:string;
-    date:string
+    date:string;
   }
     
 //TS Error - need to pass userId for postlist to render other giver error
@@ -43,7 +43,7 @@ export const postSlice = createSlice({
                 title,
                 content,
                 userId,
-                data: new Date().toISOString(),
+                date: new Date().toISOString(),
                 }
                
               }
