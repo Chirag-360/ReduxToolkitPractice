@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useId, useState} from 'react'
 import { postAdd } from '../features/postSlice'
 import { useDispatch , useSelector} from 'react-redux'
 import "./AddPostForm.css"
@@ -28,11 +28,12 @@ export const AddPostForm = () => {
 
     };
   
+    const canSave = Boolean(title) && Boolean(content) && Boolean(userId) 
     interface Users {
       id:string,
       name:string
     }
-    const userOptions = users.map((item:any)=>( <option value={item.id} key={item.id}>{item.name}</option>))
+    const userOptions = users.map((item:Users)=>( <option value={item.id} key={item.id}>{item.name}</option>))
 
   return (
     
@@ -44,13 +45,13 @@ export const AddPostForm = () => {
                 <label htmlFor="title">Title</label>
                 <input type="text" value={title} id='title' name='title' onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setTitle(e.target.value)}} />
                 <label htmlFor="auther">Auther</label>
-                  <select name="auther" id="auther" >
-                <option value="" hidden>Select Any</option>
-                  {userOptions}
+                  <select name="auther" id="auther" value={userId} onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>(setUserId(e.target.value))}>
+                <option value="" hidden >Select Any</option>
+                  {userOptions.length === 0 ? <option disabled>No Options Avaliable</option> : userOptions} 
                   </select>
                 <label htmlFor="content">Content</label>
                 <textarea name="content" id="content" value={content} onChange={(e:React.ChangeEvent<HTMLTextAreaElement>) => {setContent(e.target.value)}} ></textarea>
-                <button type='button' id='saveButton' onClick={saveData}>Save Data</button>
+                <button disabled={!canSave} type='button' id='saveButton' onClick={saveData}>Save Data</button>
                 </fieldset>
             </form>
         
