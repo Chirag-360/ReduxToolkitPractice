@@ -3,10 +3,11 @@ background-color: dimgray;
 width: 200px;
 border-radius: 5px;
 padding: 2px;
-height: 20px;
+height: 30px;
 margin: 10px;
 border: 3px solid seashell;
 margin-top: 10px;
+display: block;
 
 }
 
@@ -15,16 +16,17 @@ margin-top: 10px;
     width: 200px;
     border-radius: 5px;
     padding: 2px;
-    height: 20px;
+    height: 30px;
     margin: 10px;
-    margin-bottom: -8px;
+    margin-bottom: 10px;
     border: 3px solid seashell;
+    display: block;
 
     }
 
 #saveButton{
     color: black;
-    background-color: lightcoral;
+    background-color: rgb(216, 131, 131);
     font-size: larger;
     border-radius: 5px;
     font-style: oblique;
@@ -33,4 +35,34 @@ margin-top: 10px;
     margin-bottom: -3px;
     font-weight: bolder;
     border: 3px solid seashell;
+    display: block;
+}
+
+#auther{
+    background-color: dimgray;
+    width: 200px;
+    border-radius: 5px;
+    padding: 2px;
+    height: 40px;
+    margin: 10px;
+    margin-bottom: 10px;
+    border: 3px solid seashell;
+    display: block;
+    font-weight: lighter;
+}
+
+label{
+    font-weight: bolder;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: x-large;
+}
+
+button:disabled{
+    background-color: #cccccc !important;
+    color: #666666 !important ;
+  }
+
+button:hover {
+ color:  rgb(192, 81, 81) !important;
 }

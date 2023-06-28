@@ -4,15 +4,14 @@ interface StateItem {
     id: string;
     title: string;
     content: string;
-    userId:string;
   }
     
 
 const initialState:StateItem[] = [
     {
-        id:"1",title:"randome",content:"something" , userId:""
+        id:"1",title:"randome",content:"something"
     },  {
-        id:"2",title:"randome2",content:"something2", userId:""
+        id:"2",title:"randome2",content:"something2"
     }
 ]
 
@@ -24,17 +23,16 @@ export const postSlice = createSlice({
             reducer:(state,action)=>{
             state.push(action.payload)
              },
-            prepare:(title:string,content:string,userId:string)=>{
-                //   type:"post/postAd",
+            prepare:(title:string,content:string)=>{
               return {
                 payload:{
                 id:nanoid(),
                 title,
                 content,
-                userId,
                 }
                
               }
+            //   type:"post/postAd",
             }
         }
     }
