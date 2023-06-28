@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit"
 
+//TS Error = need to defined userId in this interface for future incoming data in userId
 interface StateItem {
     id: string;
     title: string;
@@ -7,7 +8,7 @@ interface StateItem {
     userId:string;
   }
     
-
+//TS Error - need to pass userId for postlist to render other giver error
 const initialState:StateItem[] = [
     {
         id:"1",title:"randome",content:"something" , userId:""
