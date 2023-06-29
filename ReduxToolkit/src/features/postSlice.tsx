@@ -7,6 +7,14 @@ interface StateItem {
     content: string;
     userId:string;
     date:string;
+    reactions: {
+        thumpsUp:number,
+        wow:number,
+        heart:number,
+        rocket:number,
+        coffee:number,
+
+    }
   }
     
 //TS Error - need to pass userId for postlist to render other giver error
@@ -15,15 +23,29 @@ const initialState:StateItem[] = [
         id:"1",
         title:"randome",
         content:"something",
-        userId:"",
-        date:sub(new Date(), {minutes : 10}).toISOString()
+        userId:"1vssd3we31",  
+        date:sub(new Date(), {minutes : 10}).toISOString(),
+        reactions:{
+            thumpsUp:0,
+            wow:0,
+            heart:0,
+            rocket:0,
+            coffee:0,
+        }
+       
     },  {
         id:"2",
         title:"randome2",
         content:"something2", 
-        userId:"",
-        date:sub(new Date(), {minutes : 5}).toISOString()
-
+        userId:"dfsf213sd",
+        date:sub(new Date(), {minutes : 5}).toISOString(),
+        reactions:{
+            thumpsUp:0,
+            wow:0,
+            heart:0,
+            rocket:0,
+            coffee:0,
+        }
     }
 ]
 
@@ -48,12 +70,22 @@ export const postSlice = createSlice({
                
               }
             }
+      
+        },
+        reactionAdded:(state,action)=>{
+            const {postId , reaction} = action.payload;
+            const existingPost = state.find(post => post.id === postId)
+            if(existingPost){
+                existingPost.reactions[reaction]++
+                // existingPost.reactions[]
+            }
+        
         }
     }
 })
 
 export const selectAllPost = (state:any) => state.post;
 
-export const {postAdd} = postSlice.actions
+export const {postAdd , reactionAdded} = postSlice.actions
 
 export default postSlice.reducer;

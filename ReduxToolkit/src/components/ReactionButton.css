@@ -1,0 +1,12 @@
+.reactionButton{
+    background-color: transparent;
+    border: none;
+    margin-bottom: 10px;
+    
+}
+
+.reactionButton:hover{
+ /* height: 100px; */
+ background-color: aliceblue;
+ border-radius: 90px;
+}

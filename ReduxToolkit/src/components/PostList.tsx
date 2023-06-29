@@ -4,7 +4,7 @@ import { selectAllPost } from '../features/postSlice';
 import "./PostList.css"
 import PostAuther from './PostAuther';
 import { TimeAgo } from './TimeAgo';
-
+import { ReactionButton } from './ReactionButton';
 const PostList = () => {
 
     // interface RootState {
@@ -16,20 +16,26 @@ const PostList = () => {
     //   }
 
     interface Post {
-        id: string;
-          title: string;
-          content: string;
-          userId:string;
-          date:any
+      id: string;
+      title: string;
+      content: string;
+      userId:string;
+      reactions : {thumpsUp: string, wow: string, heart: string, rocket: string, coffee: string},
+      date:any
     }
     const posts = useSelector(selectAllPost)
+    console.log(posts,"postlist")
+
+    // const orderPost = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
 
     const RenderPost:JSX.Element[] = (posts || []).map((posts:Post ) => (<article className='post-box' key={posts.userId}>
              <h3>{posts.title}</h3>
              <p>{posts.content}</p>
              <p><PostAuther post={posts}/>
-                  <TimeAgo timeStamp={posts.date}/>
+            <TimeAgo timeStamp={posts.date}/>
+
              </p>
+             <ReactionButton post={posts}/>  
 
     </article>))
   return (
@@ -37,8 +43,8 @@ const PostList = () => {
     <h1 className='post-heading'>Posts</h1>
     <div className='main-box'>
  
-    {RenderPost}
-    </div>
+      {RenderPost}
+      </div>
     </>
   )
 
