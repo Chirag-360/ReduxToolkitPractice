@@ -1,12 +1,25 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useSelector } from 'react-redux'
-import { selectAllPost } from '../features/postSlice';
+import { useDispatch } from 'react-redux';
+import { selectAllPost , getPostsError , getPostsStatus , fetchPosts} from '../features/postSlice';
 import "./PostList.css"
-import PostAuther from './PostAuther';
-import { TimeAgo } from './TimeAgo';
-import { ReactionButton } from './ReactionButton';
+import { PostEecerpt } from './PostEecerpt';
 const PostList = () => {
+ 
 
+    const dispatch = useDispatch()
+    let posts = useSelector(selectAllPost)
+    let postStatus = useSelector(getPostsStatus)
+    let error = useSelector(getPostsError)
+
+    useEffect(()=>{
+        if(postStatus === "idle"){
+         dispatch(fetchPosts() as any)
+         console.log(fetchPosts(),"dataaa")
+          }
+    },[postStatus, dispatch]) 
+
+    
     // interface RootState {
     //     posts: {
     //       id: string;
@@ -23,27 +36,25 @@ const PostList = () => {
       reactions : {thumpsUp: string, wow: string, heart: string, rocket: string, coffee: string},
       date:any
     }
-    const posts = useSelector(selectAllPost)
-    console.log(posts,"postlist")
+    // console.log(posts,"postlist")
 
     // const orderPost = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
 
-    const RenderPost:JSX.Element[] = (posts || []).map((posts:Post ) => (<article className='post-box' key={posts.userId}>
-             <h3>{posts.title}</h3>
-             <p>{posts.content}</p>
-             <p><PostAuther post={posts}/>
-            <TimeAgo timeStamp={posts.date}/>
+    // const RenderPost:JSX.Element[] = (posts || []).map((posts:Post ) => ())
 
-             </p>
-             <ReactionButton post={posts}/>  
-
-    </article>))
+    let content ;
+    if(postStatus === "loading"){
+       content = <p  style={{color:"red"}}>"Loading..."</p>
+    } else if(postStatus === "succeeded") {
+       content = posts.map(post => <PostEecerpt key={post.id} post={post}/>)
+    } else if (postStatus === "failed") {
+       content = <p style={{color:"red"}}>"error"</p>
+    }
   return (
     <>  
     <h1 className='post-heading'>Posts</h1>
     <div className='main-box'>
- 
-      {RenderPost}
+      {content}
       </div>
     </>
   )
