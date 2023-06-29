@@ -14,7 +14,7 @@ type ReactionEmoji = {
   }
 
 const reactionEmoji:ReactionEmoji = { 
-   thumpsUp:"👍 ",
+   thumpsUp:"👍",
    wow:"😯",
    heart:"🧡",
    rocket:"⏰",
@@ -23,29 +23,30 @@ const reactionEmoji:ReactionEmoji = {
 
 export interface Props {
     // post:{
-    //    post:{ 
+       post:{ 
         content: string, 
          date : string,
          id: string, 
-         reactions : {thumpsUp: string, wow: string, heart: string, rocket: string, coffee: string},
+         reactions : reactionEmojiType,
          title: string,
          userId : string
                  }
-                //  }
+                 }
                 // }
 
-export const ReactionButton = ({post}:Props) => {
+export const ReactionButton = (props:Props) => {
     const dispatch  = useDispatch()
    
-    const console2 = post.reactions
+    const post = props.post
     // const post = props.post
-    console.log(console2,"his")
+    console.log(post,"hi,there")
 
     if (!post || !post.reactions) {
         return <div>Loading...</div>;
       }
 
-    const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
+    const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji] ) => {
+        // const reactionKey = `${name}-${index+3}`;
         return(
             <button
             key={name}
@@ -55,8 +56,9 @@ export const ReactionButton = ({post}:Props) => {
                 dispatch(reactionAdded({postId:post.id, reaction:name}))
             }
             >
-                {emoji}{post.reactions[name]}                
-                {/* {emoji}{post.}                 */}
+                {emoji}
+                {post.reactions[name]}   
+                {console.log(emoji,"emoji")}{console.log(post,"post")}                
             </button>
         )
     

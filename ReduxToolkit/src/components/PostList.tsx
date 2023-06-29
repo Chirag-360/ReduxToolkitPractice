@@ -20,11 +20,13 @@ const PostList = () => {
       title: string;
       content: string;
       userId:string;
+      reactions : {thumpsUp: string, wow: string, heart: string, rocket: string, coffee: string},
       date:any
     }
     const posts = useSelector(selectAllPost)
+    console.log(posts,"postlist")
 
-    const orderPost = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
+    // const orderPost = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
 
     const RenderPost:JSX.Element[] = (posts || []).map((posts:Post ) => (<article className='post-box' key={posts.userId}>
              <h3>{posts.title}</h3>

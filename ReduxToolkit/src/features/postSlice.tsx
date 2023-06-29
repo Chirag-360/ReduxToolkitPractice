@@ -23,7 +23,7 @@ const initialState:StateItem[] = [
         id:"1",
         title:"randome",
         content:"something",
-        userId:"",  
+        userId:"1vssd3we31",  
         date:sub(new Date(), {minutes : 10}).toISOString(),
         reactions:{
             thumpsUp:0,
@@ -37,7 +37,7 @@ const initialState:StateItem[] = [
         id:"2",
         title:"randome2",
         content:"something2", 
-        userId:"",
+        userId:"dfsf213sd",
         date:sub(new Date(), {minutes : 5}).toISOString(),
         reactions:{
             thumpsUp:0,
