@@ -1,5 +1,16 @@
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
+
+const BASE_URL_USERS = "";
+
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
+    try{
+
+    }
+    catch(err) {
+
+    }
+}) 
 
 interface Users {
 id:string;
