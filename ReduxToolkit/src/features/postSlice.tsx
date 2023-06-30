@@ -44,15 +44,15 @@ const POST_URL =  "https://jsonplaceholder.typicode.com/posts";
 
 // }) 
 
-export const fetchPostss = async () => {
-    console.log("Fetching Posts");
-    const response = await axios.get(POST_URL);
-    const posts = response.data;
+// export const fetchPostss = async () => {
+//     console.log("Fetching Posts");
+//     const response = await axios.get(POST_URL);
+//     const posts = response.data;
   
-    console.log("Posts: ", posts);
-    return [...response.data];
-    // return response;
-  };
+//     console.log("Posts: ", posts);
+//     return [...response.data];
+//     // return response;
+//   };
     
 //   console.log("Posts: ", fetchPostss,"fd");
   

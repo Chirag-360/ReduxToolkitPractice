@@ -1,10 +1,11 @@
-// import React,{useEffect} from 'react'
+import React,{useCallback, useState} from 'react'
 import { useSelector } from 'react-redux'
 // import { useDispatch } from 'react-redux';
 import postSlice, { 
   selectAllPost , getPostsError , getPostsStatus , 
   fetchPostss, 
   postAdd } from '../features/postSlice';
+// import { fetchPosts } from '../ReactQuery-fetchers/fetchPosts';
 import "./PostList.css"
 import { PostEecerpt } from './PostEecerpt';
 import { fetchPosts } from '../ReactQuery-fetchers/fetchPosts';
@@ -14,8 +15,28 @@ import { fetchPosts } from '../ReactQuery-fetchers/fetchPosts';
 
 const PostList = () => {
  
+  // const [send , setSend] = useState(true)
+  const run = fetchPosts()
+  
+ console.log("this is the data")
 
-  fetchPostss()
+ const data = useCallback ( () => {
+   const post = useSelector(selectAllPost) 
+   console.log(post,"dadada")
+
+},
+  [run]
+ )
+  // if(!data == false){
+    // const post = useSelector(selectAllPost) 
+    // console.log("runnning") 
+  // } 
+  // if(send){
+  //   setSend(true)
+  //   const post = useSelector(selectAllPost) 
+  //   setSend(false)
+  // } else {}
+  // console.log(data,"data")
   // const POST_URL =  "https://jsonplaceholder.typicode.com/posts";
   
   // console.log(fetchPosts)
@@ -46,13 +67,20 @@ const PostList = () => {
 //     if( 0) {
 //       content = <p>"Data is loading still"</p>
 //     }else {
-     let content; 
-     if(data){
+ 
+// async() => {
 
-       let posts = useSelector(selectAllPost)
-       content = posts.map(post => <PostEecerpt key={post.id} post={post}/>)
-        content = <p  style={{color:"red"}}>"data is recieved"</p>
-     } 
+// }
+
+
+    //  let content; 
+    //  if(true){
+
+      //  let posts = useSelector(selectAllPost)
+      //  console.log(posts,"posts get")
+    //   //  content = posts.map(post => <PostEecerpt key={post.id} post={post}/>)
+        // content = <p  style={{color:"red"}}>"data is recieved"</p>
+    //  } 
 //     }
 
     
@@ -128,7 +156,7 @@ const PostList = () => {
     <>  
     <h1 className='post-heading'>Posts</h1>
     <div className='main-box'>
-      {content}
+      {/* {content} */}
       </div>
     </>
   )

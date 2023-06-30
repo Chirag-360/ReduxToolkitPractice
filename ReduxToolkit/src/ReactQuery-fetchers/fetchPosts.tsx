@@ -1,21 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { postAdd } from "../features/postSlice";
-
+import { postAdd, selectAllPost } from "../features/postSlice";
+// import { useState } from "react";
 export const fetchPosts = () => {
     const POSTS_BASE_URL = "https://jsonplaceholder.typicode.com/posts"
     const dispatch = useDispatch();
 
-    const { isError, isSuccess, isLoading, data:fetchPosts } = useQuery(["posts/fetch"], async () => {
+    // const [postsData , setPostsData] = useState()
+    const { isError, isSuccess, isLoading, data } = useQuery(["posts/fetch"], async () => {
     
         try{
-            // console.log("Fetching Posts");
             const response = await axios.get(POSTS_BASE_URL)
-            // const posts = response.data;
-            // console.log("Posts: ", posts);
+
             return [...response.data];
-            
         }catch (err) {
             return err
         }
@@ -23,7 +21,11 @@ export const fetchPosts = () => {
         if(isLoading) {
             console.log("loading")
         } else if (isSuccess) {
-             dispatch(postAdd(fetchPosts))
+             dispatch(postAdd(data))
+             console.log("send Post to Reducer")
+            
+            //  const datas = useSelector(selectAllPost)
+            //  setPostsData(datas) 
         }
         if(isError) {
             console.log("error")
